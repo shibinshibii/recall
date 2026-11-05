@@ -33,13 +33,21 @@ export const routes: RouteObject[] = [
       {
         path: '/',
         element: (
+          <Suspense key="landing" fallback={<PageLoader />}>
+            <Landing />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/',
+        element: (
           <MainLayout>
             <SuspenseOutlet />
           </MainLayout>
         ),
         children: [
           {
-            index: true,
+            path: 'analytics',
             element: <Analytics />,
           },
           {
